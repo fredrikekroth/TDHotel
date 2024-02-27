@@ -1,0 +1,46 @@
+﻿@page
+@using TestDrivenHotel.UI.Pages
+@model IndexModel
+@{
+    ViewData["Title"] = "TD HOTEL";
+}
+
+<div class="text-center">
+    <h1 class="display-1">Test Driven Hotel</h1>
+
+    <form method="post">
+        <br />
+        <br />
+        <label for="start">Arrival date:</label>
+        <input type="date" asp-for="@Model.ArrivalDate" min="2024-02-28" max="2030-12-31" />
+        <br />
+        <br />
+        <label for="end">Departure date:</label>
+        <input type="date" asp-for="@Model.DepartureDate" min="2024-03-01" max="2030-12-31" />
+        <br />
+        <br />
+        <label for="feature">Balcony / Ocean View: </label>
+        <select asp-for="@Model.Feature">
+            <option type="text" value="None">No option</option>
+            <option type="text" value="Balcony">Balcony</option>
+            <option type="text" value="OceanView">Ocean View</option>
+        </select>
+        <br />
+        <br />
+        <label for="guests">Amount of guests: </label>
+        <select asp-for="@Model.Guests">
+            <option type="number" value=1>1</option>
+            <option type="number" value=2>2</option>
+            <option type="number" value=3>3</option>
+            <option type="number" value=4>4</option>
+            <option type="number" value=5>5</option>
+            <option type="number" value=6>6</option>
+        </select>
+
+        <br />
+        <br />
+        <input class="btn btn-primary" type="submit" value="Find available rooms!" />
+    </form>
+
+</div>
+

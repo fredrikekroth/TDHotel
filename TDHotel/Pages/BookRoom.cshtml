@@ -1,0 +1,22 @@
+﻿@page
+@model TestDrivenHotel.UI.Pages.BookRoomModel
+@{
+}
+
+@if (Model.NewBooking != null)
+{
+    <h1>@Model.Message</h1>
+    <br />
+    <div class="clearfix"></div>
+    <h3>@Model.BookedRoom.Description</h3>
+    <br />
+    <h3>Welcome on @Model.DateOnly </h3>
+    <br />
+    <a href="/Index">Book other room</a>
+}
+else
+{
+    <h1>Booking was unsuccesful!</h1>
+    <br />
+    <a href="/Index">Return to start page</a>
+}

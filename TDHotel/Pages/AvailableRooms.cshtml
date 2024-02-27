@@ -1,0 +1,44 @@
+﻿@page
+@using TestDrivenHotel.Logic
+@model TestDrivenHotel.UI.Pages.AvailableRoomsModel
+@{
+}
+
+<h1 class="mt-4 mb-4">Available Rooms</h1>
+<div class="clearfix"></div>
+@if (Model.AvailableRooms != null)
+{
+    @foreach (var room in Model.AvailableRooms)
+    {
+        <div class="card room-card">
+            <div class="card-body">
+                <h5 class="card-title">@room.Description</h5>
+
+                @{
+                    var bookingLogic = new BookingLogic();
+                    var price = bookingLogic.PriceCalculator(room, Model.Guests);
+                }
+                <p class="card-text">Price: @price dollar / night</p>
+                <p class="card-text">Number of Guests: @Model.Guests</p>
+                <p class="card-text">Max Amount of Guests: @room.MaxGuests</p>
+                @if (room.OceanView)
+                {
+                    <p class="card-text"><i class="fa fa-eye"></i> Ocean View</p>
+                }
+                @if (room.Balcony)
+                {
+                    <p class="card-text"><i class="fa fa-home"></i> Balcony</p>
+                }
+                <div class="clearfix"></div>
+                <div class="clearfix">
+                    <a asp-page="/BookRoom" asp-route-roomId="@room.Id"
+                       asp-route-arrivalDate="@Model.ArrivalDate"
+                       asp-route-departureDate="@Model.DepartureDate"
+                       class="btn btn-primary">Book room</a>
+                </div>
+            </div>
+        </div>
+    }
+    <a href="/Index">Back to index</a>
+}
+
